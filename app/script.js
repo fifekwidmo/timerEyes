@@ -16,7 +16,6 @@ class App extends React.Component {
     time: 0, 
     timer: null, 
 	};
-
 	formatTime = (time) => {
 	let minutes = Math.floor(time/60);
 	let seconds = Math.floor(time%60);
@@ -27,9 +26,8 @@ class App extends React.Component {
 		seconds = '0' + seconds;
 	}
 	return `${minutes}:${seconds}`;
-}
-
-step = () => {
+	}
+	step = () => {
 	this.setState({
 		time: this.state.time - 1,
 	});
@@ -46,32 +44,29 @@ step = () => {
 			time: 1200,
 		});
 	}
-};
-
-startTimer = () => {
-	this.setState({
-		status: 'work',
-		time: 1200,
-		timer: setInterval(this.step, 1000),
-	});
-};
-
-stopTimer = () => {
-	clearInterval(this.state.timer)
-	this.setState({
-		status: 'off',
-		time: 0,
-		timer: null,
-	})
-}
-playBell = () => {
-	const bell = new Audio('./sounds/bell.wav');
-	bell.play();
-};
+	};
+	startTimer = () => {
+		this.setState({
+			status: 'work',
+			time: 1200,
+			timer: setInterval(this.step, 1000),
+		});
+	};
+	stopTimer = () => {
+		clearInterval(this.state.timer)
+		this.setState({
+			status: 'off',
+			time: 0,
+			timer: null,
+		})
+	}
+	playBell = () => {
+		const bell = new Audio('./sounds/bell.wav');
+		bell.play();
+	};
 	closeApp = () => {
-	window.close()
-}
-	
+		window.close()
+	}	
 	render() {
     const { status, time } = this.state;
     return (
